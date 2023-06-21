@@ -63,11 +63,26 @@ developing your own process.
 - Add a new toy when the toy form is submitted
 
   - How I debugged:
+  POST 500: internal server error, open rails log
+  NameError (uninitialized constant ToysController::Toys):
+  
+  app/controllers/toys_controller.rb:10:in `create'
+
+  adjusted Toys to Toy
 
 - Update the number of likes for a toy
 
   - How I debugged:
+  error: Uncaught (in promise) SyntaxError: Unexpected end of JSON input
+  -check fetch request
+  -check controller action
+  -id = unpermitted param, updated toy_params to include id, and the update method needed a render json.
+  
 
 - Donate a toy to Goodwill (and delete it from our database)
 
   - How I debugged:
+  error: 404 - Not Found
+  checked rails server log
+  No route matches [DELETE] "/toys/1"
+  -added new destroy in routes
